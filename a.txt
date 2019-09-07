@@ -1,6 +1,10 @@
-Ë®µç·ÑË®µç·Ñ
+ï»¿æ°´ç”µè´¹æ°´ç”µè´¹
 
 laingsdfdjfsdf
+<<<<<<< HEAD
 master branch
 conflict branch
 
+=======
+master branch
+>>>>>>> conflict
