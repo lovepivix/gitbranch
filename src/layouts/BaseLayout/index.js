@@ -19,7 +19,7 @@ export class BaseLayout extends Component {
             Header
           </Header>
           <Layout>
-            <Sider>
+            <Sider style={{overflow:'auto'}} className={style.noBar}>
               <MenuExam menu={this.props.routes}></MenuExam>
             </Sider>
             <Content>

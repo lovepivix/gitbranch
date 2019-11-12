@@ -47,6 +47,7 @@ class MenuExam extends React.Component {
           mode="inline"
           theme="dark"
           inlineCollapsed={this.state.collapsed}
+          style={{ overflow: 'auto'}}
         >
          {menu.map(item=>{
            if(item.children){
