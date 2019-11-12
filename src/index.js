@@ -1,27 +1,22 @@
 import dva from 'dva';
 import './index.css';
 import 'antd/dist/antd.less'
-import './utils/rem'
-import createLoading from 'dva-loading';
 import { message } from 'antd';
-
-
+// import createHistory from 'history/createBrowserHistory';
 
 // 1. Initialize
-export const app = dva(
-    {
-        onError(e,dispatch) {
-          message.error(e.message, /* duration */3);
-        },
-      }
-);
+export const app = dva({
+    // history: createHistory(),
+    onError(e) {
+        message.error(e.msg, /* duration */);
+      },
+});
 
 // 2. Plugins
-// app.use({});
-app.use(createLoading());
+// app.use(storage);
 
 // 3. Model
-// app.model(require('./models/example').default);
+// app.model(require('./models/question').default);
 
 // 4. Router
 app.router(require('./router').default);
