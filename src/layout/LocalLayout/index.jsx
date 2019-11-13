@@ -3,7 +3,6 @@ import { Layout, Menu, Icon, Form } from "antd";
 import { withRouter } from "dva/router";
 import Islogin from "@/utils/islogin";
 import styles from "./style.less";
-import Headers from "@/components/header";
 import storage from "@/utils/storage";
 
 const { Header, Sider, Content } = Layout;
@@ -48,13 +47,13 @@ class LocalLayout extends Component {
           </div>
         </Header>
         <Layout>
-          <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
-            <div className="logo" />
+          <Sider trigger={null} collapsible collapsed={this.state.collapsed} >
             <Menu
               theme="dark"
               mode="inline"
               defaultSelectedKeys={["1"]}
               defaultOpenKeys={["1"]}
+              
             >
               {routes &&
                 routes.map(item => (
@@ -82,15 +81,11 @@ class LocalLayout extends Component {
             </Menu>
           </Sider>
           <Layout>
-            {this.props.location.pathname == "/question/look" ? (
-              <Headers />
-            ) : (
               <div className={styles.title}>
                 {this.props.location.state != undefined
                   ? this.props.location.state.title
                   : ""}
               </div>
-            )}
             <Content
               style={{
                 margin: "24px 16px",

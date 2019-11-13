@@ -9,7 +9,7 @@ export default {
 
   subscriptions: {
     init({ dispatch, history }) {
-      // dispatch({ type: "questionLook/initData" });
+      
     }
   },
 
