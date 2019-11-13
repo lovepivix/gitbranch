@@ -1,13 +1,16 @@
+
 import React, { Component } from 'react';
 
-export class QuestionType extends Component {
+
+class RoomManagement extends Component {
     render() {
         return (
             <div>
-                QuestionType
+                
             </div>
         );
     }
 }
 
-export default QuestionType;
+
+export default RoomManagement;
