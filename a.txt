@@ -1,0 +1,10 @@
+﻿水电费水电费
+
+laingsdfdjfsdf
+<<<<<<< HEAD
+master branch
+conflict branch
+
+=======
+master branch
+>>>>>>> conflict
