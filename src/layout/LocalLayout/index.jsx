@@ -21,7 +21,6 @@ class LocalLayout extends Component {
     });
   };
   hadlerChange = item => {
-    console.log(item.key);
     this.props.history.push({
       pathname: item.key,
       state: { title: item.item.props.children }
@@ -43,7 +42,7 @@ class LocalLayout extends Component {
           />
           <div className={styles.right}>
             <span className={styles.icon}>
-              <span className={styles.info}></span>
+              
               {info && info.user_name}
             </span>
           </div>
@@ -70,12 +69,14 @@ class LocalLayout extends Component {
                   >
                     {item.children &&
                       item.children.map(el => {
-                       return el.meta.title !== "试题详情"? 
+                        return el.meta.title !== "试题详情" ? (
                           <Menu.Item key={el.path} onClick={this.hadlerChange}>
                             {el.meta && el.meta.title}
-                          </Menu.Item>:''
-                        }
-                      )}
+                          </Menu.Item>
+                        ) : (
+                          ""
+                        );
+                      })}
                   </Menu.SubMenu>
                 ))}
             </Menu>
