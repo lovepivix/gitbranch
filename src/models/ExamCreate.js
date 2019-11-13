@@ -1,5 +1,5 @@
-import * as usersService from "../services/question";
-const { getCreateQuestion } = usersService;
+import * as usersService from "../services/exam";
+const { createExam } = usersService;
 export default {
   namespace: "ExamCreate",
 
@@ -12,19 +12,21 @@ export default {
   },
 
   effects: {
-    *getcreateQuestion(
+    *CreateExam(
       {
         params
       },
       { call, put }
     ) {
       // eslint-disable-line
-      const res = yield call(getCreateQuestion, params);
+      console.log(params)
+      const res = yield call(createExam, params);
+      console.log(res)
     }
   },
 
   reducers: {
-    login(state, action) {
+    CreateExam(state, action) {
       return { ...state, ...action.payload };
     }
   }

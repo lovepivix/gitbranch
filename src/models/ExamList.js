@@ -1,9 +1,11 @@
-import * as usersService from "../services/question";
-const { getCreateQuestion } = usersService;
+import * as usersService from "../services/exam";
+const { getExam } = usersService;
 export default {
   namespace: "ExamList",
 
-  state: {},
+  state: {
+    getExamList:[]
+  },
 
   subscriptions: {
     init({ dispatch, history }) {
@@ -12,20 +14,21 @@ export default {
   },
 
   effects: {
-    *getcreateQuestion(
+    *getExamList(
       {
         params
       },
       { call, put }
     ) {
       // eslint-disable-line
-      const res = yield call(getCreateQuestion, params);
+      const res = yield call(getExam);
+      yield put({type:'sendExamList',payload:res.exam})
     }
   },
 
   reducers: {
-    login(state, action) {
-      return { ...state, ...action.payload };
+    sendExamList(state, action) {
+      return { ...state, getExamList:action.payload };
     }
   }
 };

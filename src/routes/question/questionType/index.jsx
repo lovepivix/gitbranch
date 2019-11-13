@@ -71,6 +71,7 @@ class QuestionType extends Component {
   };
   render() {
     const { getQuestionsType } = this.props;
+    console.log(getQuestionsType)
     let { num } = this.state;
     const   columns=[
       {

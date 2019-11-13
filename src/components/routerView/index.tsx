@@ -52,7 +52,9 @@ require("@/routes/class/ClassStudent")
 const LookExamWait = dynamic(["LookExamWait"], () =>
 require("@/routes/lookExam/LookExamWait")
 );
-
+const ExamDetail = dynamic(["ExamDetail"], () =>
+require("@/routes/exam/ExamDetail")
+);
 const Routes = [
   {
     path: "/login",
@@ -155,9 +157,17 @@ const Routes = [
             meta: {
               title: "试题列表"
             }
+          },
+          {
+            path: "/exam/detail/:id",
+            component: ExamDetail,
+            meta: {
+              title: "试题详情"
+            },
           }
         ]
       },
+      
       {
         path: "/class",
         component: Main,
@@ -207,9 +217,33 @@ const Routes = [
             }
           }
         ]
-      }
+      },
+      // {
+      //   path:'/question',
+      //   redirect:'/question/create'
+      // },
+      // {
+      //   path:'/user',
+      //   redirect:'/user/create'
+      // },
+      // {
+      //   path:'/exam',
+      //   redirect:'/exam/create'
+      // },
+      // {
+      //   path:'/lookExam',
+      //   redirect:'/lookExam/waite'
+      // },
+      // {
+      //   path:'/class',
+      //   redirect:'/class/Manager'
+      // }
     ]
-  }
+  },
+  // {
+  //   path:'/',
+  //   redirect:'/question'
+  // }
 ];
 
 export default Routes;

@@ -9,8 +9,8 @@ const RouterView = (props) => {
   return (
     <Switch>
       {
-        routesArr.map((item)=>{
-          return <Route path={item.path}  key={item.path} render={(props)=>{
+       routesArr&& routesArr.map((item,ind)=>{
+          return <Route path={item.path}  key={ind} render={(props)=>{
             return <item.component {...props} routes={item.children} > 
                     <RouterView routes={item.children} ></RouterView>
                 </item.component>
@@ -18,7 +18,7 @@ const RouterView = (props) => {
         })
       }
       {
-         redirectArr.map((item,ind)=><Redirect  key={ind} to={item.redirect} from={item.path} />)
+        redirectArr&& redirectArr.map((item,ind)=><Redirect  key={ind} to={item.redirect} from={item.path} />)
       }
     </Switch>
   );
