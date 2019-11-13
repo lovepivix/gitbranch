@@ -42,32 +42,41 @@ class LocalLayout extends Component {
           />
           <div className={styles.right}>
             <span className={styles.icon}>
-              <span className={styles.info}></span>
-              {info.user_name}
+              
+              {info && info.user_name}
             </span>
           </div>
         </Header>
-        <Layout>  
+        <Layout>
           <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
             <div className="logo" />
-            <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]} defaultOpenKeys={['1']}>
+            <Menu
+              theme="dark"
+              mode="inline"
+              defaultSelectedKeys={["1"]}
+              defaultOpenKeys={["1"]}
+            >
               {routes &&
                 routes.map(item => (
                   <Menu.SubMenu
                     key={item.path}
                     title={
                       <span>
-                        <Icon type={item.meta.icon} />
-                        <span>{item.meta.title}</span>
+                        <Icon type={item.meta && item.meta.icon} />
+                        <span>{item.meta && item.meta.title}</span>
                       </span>
                     }
                   >
                     {item.children &&
-                      item.children.map(el => (
-                        <Menu.Item key={el.path} onClick={this.hadlerChange}>
-                          {el.meta.title}
-                        </Menu.Item>
-                      ))}
+                      item.children.map(el => {
+                        return el.meta.title !== "试题详情" ? (
+                          <Menu.Item key={el.path} onClick={this.hadlerChange}>
+                            {el.meta && el.meta.title}
+                          </Menu.Item>
+                        ) : (
+                          ""
+                        );
+                      })}
                   </Menu.SubMenu>
                 ))}
             </Menu>
@@ -76,7 +85,11 @@ class LocalLayout extends Component {
             {this.props.location.pathname == "/question/look" ? (
               <Headers />
             ) : (
-              <div className={styles.title}>{this.props.location.state != undefined ? this.props.location.state.title:''}</div>
+              <div className={styles.title}>
+                {this.props.location.state != undefined
+                  ? this.props.location.state.title
+                  : ""}
+              </div>
             )}
             <Content
               style={{

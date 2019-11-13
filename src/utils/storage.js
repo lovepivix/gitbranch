@@ -1,3 +1,4 @@
+
 const stroage = {
   get: key => {
     let value = window.localStorage.getItem(key);
@@ -17,3 +18,4 @@ const stroage = {
   }
 };
 export default stroage;
+

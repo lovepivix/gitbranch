@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 
-class Main extends Component {
+export class Exam extends Component {
     render() {
-        console.log(this.props.children)
         return (
             <div>
-                {this.props.children}
+                
             </div>
         );
     }
 }
 
-export default Main;
+export default Exam;

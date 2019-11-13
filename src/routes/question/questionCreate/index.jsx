@@ -38,7 +38,7 @@ class QuestioncRreate extends Component {
     }
     showConfirm=()=> {
       const {questions_stem,title,questions_answer,subject_id,questions_type_id,exam_id,user_id}=this.state
-      const {getcreateQuestion,fetchCondition}=this.props
+      const {getcreateQuestion}=this.props
       let params={
         questions_stem,title,questions_answer,subject_id,questions_type_id,exam_id,user_id
       }

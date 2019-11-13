@@ -1,5 +1,5 @@
-import storage from './storage'
 
+import storage from './storage'
 const objectQueryString = obj => {
   let str = "";
   Object.keys(obj).forEach(item => {
@@ -48,4 +48,5 @@ export default {
   delete(url, data = {}, headers = {}) {
     return request(url, "DELETE", data, headers);
   }
-};
+
+}

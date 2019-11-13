@@ -19,7 +19,9 @@ export default {
       { call, put }
     ) {
       // eslint-disable-line
+      console.log(params)
       const res = yield call(createExam, params);
+      console.log(res)
     }
   },
 
