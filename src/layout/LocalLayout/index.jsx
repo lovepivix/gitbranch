@@ -21,7 +21,6 @@ class LocalLayout extends Component {
     });
   };
   hadlerChange = item => {
-    console.log(item.key)
     this.props.history.push({
       pathname: item.key,
       state: { title: item.item.props.children }

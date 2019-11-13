@@ -9,9 +9,9 @@ export default {
     // "theme": "./theme.js",
     "proxy": {
         "/api": {
-            "target": "http://localhost:7001",
+            "target": "http://169.254.3.230:7001",
             "changeOrigin": true,
             "pathRewrite": { "^/api" : "" }
         }
-    }
+    },
 }
