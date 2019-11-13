@@ -9,7 +9,8 @@ const initState = (state) => {
 const InitSispatch = (dispatch) => {
     return {
         saveList: (obj) => dispatch({ type: "ClassTeach/getAlllist", params: obj }),
-        Insert:(obj)=>dispatch({type: "ClassTeach/Insertobj", params: obj})
+        Insert:(obj)=>dispatch({type: "ClassTeach/Insertobj", params: obj}),
+        delete:(obj)=>dispatch({type: "ClassTeach/deleteobj", params: obj}),
     }
 }
 @connect(initState, InitSispatch)
@@ -25,10 +26,19 @@ class ClassTeach extends Component {
                 title: '教室排序',
                 dataIndex: 'room_id',
                 key: 'room_id',
-            }
+            },
+            {
+                title: 'Action',
+                key: 'action',
+                render: (text, record) => (
+                    <a onClick={this.removeobj.bind(this,record)}>Delete</a>
+                ),
+              },
         ],
         room_id:"",
-        visible: false
+        visible: false,
+        removevisible:false,
+        obj:{}
     }
     render() {
         return (
@@ -38,15 +48,30 @@ class ClassTeach extends Component {
                     this.props.list.length &&
                     <Table columns={this.state.columns} dataSource={this.props.list} rowKey={(record) => record.room_id} />}
                 <Modal
-                    title="Basic Modal"
+                    title="添加教室"
                     visible={this.state.visible}
                     onOk={this.handleOk.bind(this)}
                     onCancel={this.handleCancel}
                 >
                     <Input name="grade_name" onChange={this.change.bind(this)} placeholder="教室号"/>
                 </Modal>
+                <Modal
+                    title="删除教室"
+                    visible={this.state.removevisible}
+                    onOk={this.removeOk.bind(this)}
+                    onCancel={this.handleCancel}
+                >
+                    <p>确认删除？？</p>
+                </Modal>
             </div>
         );
+    }
+    removeobj(obj){
+      this.setState({obj,removevisible:true})
+    }
+    removeOk(){
+        this.props.delete(this.state.obj)
+        this.setState({obj:{},removevisible:false})
     }
     change(e){
        this.setState({
@@ -70,6 +95,7 @@ class ClassTeach extends Component {
     handleCancel = e => {
         this.setState({
             visible: false,
+            removevisible:false
         })
     }
 

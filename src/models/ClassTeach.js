@@ -1,4 +1,4 @@
-import {getAllStudent, Insert} from "../services/ClassTeach";
+import {getAllStudent, Insert,Delete} from "../services/ClassTeach";
 export default {
   namespace: "ClassTeach",
 
@@ -14,13 +14,18 @@ export default {
       yield put({type:"save",data:res.data})
     },
     *Insertobj({params},{call,put}){
-      console.log(params)
       const res = yield call(Insert, params);
+      if(res.code===1){
+         yield put({type:"getAlllist"})
+      }
+    },
+    *deleteobj({params},{call,put}){
+      console.log(params)
+      const res = yield call(Delete, params);
       console.log(res)
       if(res.code===1){
          yield put({type:"getAlllist"})
       }
-     
     }
   },
 

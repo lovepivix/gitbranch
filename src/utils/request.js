@@ -44,5 +44,8 @@ export default {
   },
   post(url, data = {}, headers = {}) {
     return request(url, "POST", data, headers);
+  },
+  delete(url, data = {}, headers = {}) {
+    return request(url, "DELETE", data, headers);
   }
 };
